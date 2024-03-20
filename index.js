@@ -2,7 +2,8 @@ let botonEncriptar = document.querySelector(".btn-encrypt");
 let botonDesencriptar = document.querySelector(".btn-decrypt");
 let avatar = document.querySelector(".avatar-container");
 let container = document.querySelector(".text-result-container");
-let resultado = document.querySelector(".result-container");
+let resultado = document.querySelector(".resultado");
+let botonCopy = document.querySelector(".btn-copy");
 
 botonEncriptar.onclick = encrypt;
 botonDesencriptar.onclick = decrypt;
@@ -25,8 +26,9 @@ function recoverText() {
 }
 
 function hideForward() {
-  avatar.classList.add("hide");
-  container.classList.add("hide");
+  avatar.style.visibility = "hidden";
+  container.style.visibility = "hidden";
+  botonCopy.style.visibility = "visible";
 }
 
 function encryptText(mensaje) {
@@ -78,12 +80,10 @@ function decryptText(mensaje) {
   return finalText;
 }
 
-const btnCopy = document.querySelector(".btn-copy");
-
 function copiar() {
-  let content = document.querySelector(".result-container").textContent;
+  let content = document.querySelector(".resultado").textContent;
   navigator.clipboard.writeText(content);
   console.log("Check");
 }
 
-btnCopy.addEventListener("click", copiar);
+botonCopy.addEventListener("click", copiar);
